@@ -8,12 +8,11 @@
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
-                        {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" />
+                        <button type="submit" class="btn btn-success">Сохранить</button>
                         <div class="card-footer">
                             <a type="button" href="{% url 'users:send_new_password' %}" class="btn btn-primary">
-                                Сгенерировать новый пароль
+                                Отправить новый пароль по Еmail
                             </a>
                         </div>
 

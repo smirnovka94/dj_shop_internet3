@@ -14,11 +14,11 @@ class VerificationForm(forms.Form):
     key = forms.CharField()
 
 
-class UserChangeForm(StyleForMixin, UserChangeForm):
+class ChangeForm_User(StyleForMixin, UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('email','password')
+        fields = ('email', 'password', 'phone', 'country')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
