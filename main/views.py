@@ -1,10 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
+from main.services import get_cache_categories
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from main.forms import ProductForm, VersionForm
-from main.models import Product, Version
+from main.models import Product, Version, Category
 
 
 def home(request):
@@ -27,6 +29,16 @@ def contacts(request):
 class ProductListView(ListView):
     model = Product
     template_name = 'main/home.html'
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'main/category_list.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        get_cache_categories(self)
+        context_data['categories'] = get_cache_categories(self)
+        return context_data
 
 class ProductDetailView(DetailView):
     model = Product
