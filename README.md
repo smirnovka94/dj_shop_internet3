@@ -27,8 +27,12 @@ pip install -r src\requirements.txt
 ```
 ### создать базу данных в PgAdmin с именем <shop_internet3>
 
-### создать файл <.env> из <.env.template>
-
+### создать файл <.env> из <.env.example>
+В качестве примера можно использовать данные
+CACHE_ENABLED=1
+CACHE_LOCATION=redis://127.0.0.1:6379
+CACHE_EMAIL_HOST_USER=fuchup@oscarbot.ru
+CACHE_EMAIL_HOST_PASSWORD=AsTSNVv7pun9
 ### создаем миграции
 ```
 python manage.py makemigrations
